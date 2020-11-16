@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TechcreatixLearner</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+      </head>
+      <body>
+
+<div class="card " style="height: 4rem;" >
+    <div class="card-body" >
+     <nav class="navbar navbar-expand-md navbar-light " style="height: 30px;" >
+ 
+         <div class="collapse navbar-collapse" id="navbarNav">
+             <ul class="navbar-nav mr-auto">
+                 <li class="nav-item">
+                    <a href="#"><img src="images/icon.png" style= 'width:35px;'></a>
+                 </li>
+                 <li class="nav-item" style="padding-left: 10px;">
+                     <h3 style="color: #2422223c;" >Techcreatix</h3>
+                 </li>
+                 <li class="nav-item dropdown" style="padding-left: 22px;">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Topics
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <p class="dropdown-item">Devise</p>
+                        
+                     </div>
+                 </li>
+             </ul>
+             <form class="form-inline my-2 my-lg-0">
+                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+               </form>
+         </div>
+     </nav>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <p style="color: #4b4949;">CONTENTS </p>
+            <p><a href="#pre" style="color: #807a7a;">Prerequisites?</a></p>
+            <p><a href="#Setting" style="color: #807a7a;">Device Setup for rails?</a></p>
+            <p><a href="#config" style="color: #807a7a;">Configure Devise?</a></p>
+            <p><a href="#model" style="color: #807a7a;">Setup user model ?</a></p>
+            <p><a href="#link" style="color: #807a7a;">Add Sign_up and login link?</a></p>
+            <p><a href="#command" style="color: #807a7a;">Basic Command?</a></p>
+            <p><a href="#ConfigureViews" style="color: #807a7a;">Configuration Views?</a></p>
+            <p><a href="#ConfigureController" style="color: #807a7a;">Configuration Controller?</a></p>
+      
+      
+      
+          </div>
+          <div class="col-6">
+            <h4 style="color:rgb(52, 52, 167)">Tutorial</h4>
+<h2 style="color: blue;">How to setup devise in rails 6?</h2>
+<h5 style="padding-top:20px;">Introduction</h5>
+<p><strong>Devise</strong> is a flexible authentication solution for Rails based on Warden. It
+    is Rack based. It is a complete MVC solution based on Rails engines.
+    It allows you to have multiple models signed in at the same time.
+    It is based on a modularity concept: use only what you really need.
+    <p><strong>Devise</strong> support both Mongoid and ActiveRecord, we rely on this variable to run specific code for each ORM.
+    The default value of DEVISE_ORM is active_record.
+    <br>
+    <br>
+    In this tutorial you will learn how to setup devise with gem and you will be able to 
+    make model, and controller, views of signup, login and other with is given by devise.
+
+    </p>
+</p>
+<h3 id="Pre">Prerequisites</h3>
+<p>To follow this tutorial you will need:</p>
+<ul>
+    <li>
+        First of all you need to install ruby on your machine
+    </li>
+    <li>
+        after installation ruby you need to to install rails and create new project with
+        postgresql database by this command:<br>
+        <p style="background-color: #7e7c7c;"> raqils new appname -d postgresql</p>
+
+    </li>
+</ul>
+<h3 id="Setting">Setting up Devise for rails</h3>
+<ul style="list-style:none">
+    <li>
+        <strong>Add Devise gem</strong><br> 
+        &nbsp;&nbsp; open your <strong>gemfile</strong> and add this line.
+        &nbsp;&nbsp;<p style="background-color: #7e7c7c;"> gem &nbsp;'devise'</p>
+        &nbsp; And run command in your terminal
+        &nbsp;&nbsp;<p style="background-color: #7e7c7c;"> bundle install</p>
+    </li>
+</ul>
+<h3 id="config">Configure Devise</h3>
+<ul style="list-style:none">
+    <li>
+        Open up  <strong style="color: firebrick;">config/environments/development.rb</strong>  and add this line:<br> 
+        &nbsp;&nbsp;<p style="background-color: #7e7c7c;font-size:small">   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }</p>
+        
+    </li>
+    <li>
+        Open up  <strong style="color: firebrick;">app/views/layouts/application.html.erb</strong>  and add<br> 
+        &nbsp;&nbsp;<p style="background-color: #7e7c7c;font-size:small"> <img src="./images/notice.png" style= 'width:500px;' />
+        </p>
+        right above
+        &nbsp;&nbsp;<p style="background-color: #7e7c7c;"><i><</i><i>%= <strong style="color: rgb(153, 40, 40);">yield</strong> %></i></p>        
+    </li>
+</ul>
+<h3 id="model">Setup user model</h3>
+<ul style="list-style: none;">
+    <li>
+        We’ll use a bundled generator script to create the User model.
+        <br> Run below command to generate user model of devise
+        <p style="background-color: #7e7c7c;">    rails g devise user
+        </p>
+        After generating model Run below Command for to migrate table in database
+        <p style="background-color: #7e7c7c;">   rails db:migrate
+        </p>
+    </li>
+</ul>
+<ul style="list-style: none;">
+    
+    <li>
+        <h5>Create your first User</h5>
+        Now that you have set everything up you can create your first user. Devise creates all the code and routes required to create accounts, log in, log out and signup, etc.
+    </li>
+    <br>
+    
+    <li>
+        Make sure your rails server is running,
+        open<strong style="color:firebrick"><br> http://localhost:3000/users/sign_up</strong> and create your user account.
+    </li>
+</ul>
+<h3 id="link">Add Sign up and login link</h3>
+<ul style="list-style: none;">
+    <li>
+        All we need to do now is to add appropriate links or notice about the user being loggedin<br> In the view place below code 
+        where you want to keep your login, logout or signup button.
+        <br>
+        <br>
+        In order to do that, edit app/views/layouts/application.html.erb add:
+        &nbsp;&nbsp;<p style="background-color: #7e7c7c;color:white"><i><</i><i>% if user_signed_in? %></i>
+        <br>  Logged in as <i><</i>strong><i><</i>%= current_user.email %><i><</i>/strong><br>
+        <i><</i>%= link_to "Logout", destroy_user_session_path, method: :delete %><br>
+        <i><</i>% else %><br>
+        <i><</i>%= link_to "Sign up", new_user_registration_path %><br>
+        <i><</i>%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><br>
+        <i><</i>% end %> 
+        </p>
+    </li>
+    <li>
+        Finally, force the user to redirect to the login page if the user was not logged in. Open up <strong style="color: firebrick;">app/controllers/application_controller.rb</strong> and add or  add in any other controller which is you want to authorize after login:
+        <p style="background-color: #7e7c7c;color:white">  before_action :authenticate_user!</p>
+        
+        after <p style="background-color: #7e7c7c;color:white">class ApplicationController < ActionController::Base</p>
+    </li>
+    <li>
+        Open your browser and try logging in and logout and sign up in your application.
+    </li>
+</ul>
+
+<h3 id="command">Basic commnand</h3>
+<ul>
+    <li>To verify if a user is signed in, use the following helper:
+     <p style="background-color: #7e7c7c;color:white">user_signed_in?</p>
+
+    </li>
+    <li>For the current signed-in user, this helper is available:
+        <p style="background-color: #7e7c7c;color:white">current_user</p>
+   
+    </li>
+    <li>You can access the session for this scope:
+        <p style="background-color: #7e7c7c;color:white">user_session</p>
+   
+    </li>
+    <li>Notice that if your Devise model is called Member instead of User, for example, then the helpers available are:
+        <p style="background-color: #7e7c7c;color:white">before_action :authenticate_member!
+        <br>member_signed_in?
+        <br>current_member
+        <br>member_session</p>
+   
+    </li>
+
+</ul>
+<h3 id="ConfigureViews">Configure Views</h3>
+<ul style="list-style: none;">
+    <li>Since Devise is an engine, all its views are packaged inside the gem. These views will help you get started, but after some time you may want to change them. If this is the case, you just need to invoke the following generator, and it will copy all views to your application:
+        <p style="background-color: #7e7c7c;color:white">$ rails generate devise:views</p>
+
+    </li>
+</ul>
+<h3 id="ConfigureController">Configure Controller</h3>
+<ul style="list-style: none;">
+    <li>
+        If the customization at the views level is not enough, you can customize each controller by following these steps:
+        <ol>
+            <li>
+                Create your custom controllers using the generator which requires a scope:
+                <p style="background-color: #7e7c7c;color:white">$ rails generate devise:controllers [scope]</p>
+
+            </li>
+            <li>
+                Tell the router to use this controller:
+                <p style="background-color: #7e7c7c;color:white">devise_for :users, controllers: { sessions: 'users/sessions' }</p>
+
+            </li>
+            <li>
+                Copy the views from <strong> devise/sessions  </strong> to <strong> users/sessions.</strong> Since the controller was changed, it won't use the default views located in devise/sessions
+            </li>
+            <li>
+                Finally, change or extend the desired controller actions or override functionality whatever you want.
+            </li>
+        </ol>
+    </li>
+</ul>
+</div>
+<div class="col-3" style="justify-content:center">
+    <div class="container" style="position: fixed;">
+      <div class="card" style="width: 18rem;">
+        <img src="./images/auther.png" />
+        <div class="card-body">
+          <h5 class="card-title">Muhammad Saad Siddique</h5>
+          <p class="card-text">Muhammad Saad ruby on rails developer. Recently joining as a ruby on rails developer in techcreatix software house in lahore</p>
+      
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+</div>
+<footer class="page-footer font-small blue" style="left:0;bottom:0;width:100%;
+background-color:#e6dcdc;color:rgb(5, 4, 4);text-align:center;">
+<div class="footer-copyright text-center py-2">2020 Copyright:<a href="">Techcreatix</a>
+
+</div>
+
+</footer>
+ 
+</body>
+</html>
